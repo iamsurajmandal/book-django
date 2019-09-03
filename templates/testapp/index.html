@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8">
+    <title>books</title>
+<link rel="stylesheet" href="{% static 'css/master.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+
+  #block-header{border-right: 1px solid black;
+    text-align:center;
+    padding:0px 5px 0px 5px;
+  }
+  #result-header{
+border-right: 1px solid black;
+  }
+
+
+  </style>
+</head>
+  <body>
+    {% block body-block %}
+<div class="container" align="center">
+<div class="jumbotron">
+  <h1>Book Shell</h1>
+   {%if library %}
+   <table style="border: 1px solid black;">
+  <thead >
+    <th id="block-header">title</th>
+    <th id="block-header">description</th>
+    <th id="block-header">genre</th>
+    <th id="block-header">raiting</th>
+    <th id="block-header">author</th>
+</thead>
+{% for b in library%}
+<tr >
+  <td id="result-header">{{b.title}}</td>
+  <td id="result-header">{{b.desc}}</td>
+  <td id="result-header">{{b.genre}}</td>
+  <td id="result-header">{{b.rating}}</td>
+  <td id="result-header">{{b.author}}</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p>record does not found</p>
+{% endif %}
+
+
+  <h5>sort by Rating</h5>
+<a href="rating">  <button type="button" class="btn btn-primary" name="button">sort</button></a>
+  <h5>sort by Genre</h5>
+  <button type="button" class="btn btn-primary" name="button">sort</button>
+</div>
+  </div>
+{% endblock%}
+  </body>
+</html>
